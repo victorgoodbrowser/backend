@@ -24,7 +24,6 @@ public class Jogo {
     private String categoriaCodigo;
     private String usuarioCodigo;
     private Integer qtdDeAvaliacao;
-    private String comentario;
 
     @Lob
     private byte[] imagem;

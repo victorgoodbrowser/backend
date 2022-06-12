@@ -18,8 +18,8 @@ public class Avaliacao {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Integer id;
+
     private Integer nota;
     private Integer jogoCodigo;
     private Integer usuarioCodigo;
-    private String comentario;
 }
