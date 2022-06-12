@@ -2,6 +2,7 @@ package com.goodbrowsergames.backend.controller;
 
 import com.goodbrowsergames.backend.entity.Avaliacao;
 import com.goodbrowsergames.backend.entity.Jogo;
+import com.goodbrowsergames.backend.model.AvaliacaoJogoComentario;
 import com.goodbrowsergames.backend.service.AvaliacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,10 @@ public class AvaliacaoController {
     public List<Avaliacao> listarAvaliacao() { return avaliacaoService.readAll(); }
 
     @PostMapping("/qtdDeAvaliacao/{idUsuario}/{nota}")
-    public Jogo jogo(@RequestBody Jogo jogo,
+    public Jogo jogo(@RequestBody AvaliacaoJogoComentario avaliacaoJogoComentario,
                      @PathVariable Integer idUsuario,
                      @PathVariable Integer nota) {
-        return avaliacaoService.qtdDeAvaliacao(jogo, idUsuario, nota);
+        return avaliacaoService.qtdDeAvaliacao(avaliacaoJogoComentario , idUsuario, nota);
     }
 
     @GetMapping("/listarPorIdJogo/{idJogo}")

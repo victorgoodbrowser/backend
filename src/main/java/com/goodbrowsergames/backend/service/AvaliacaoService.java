@@ -3,6 +3,7 @@ package com.goodbrowsergames.backend.service;
 import com.goodbrowsergames.backend.entity.Avaliacao;
 import com.goodbrowsergames.backend.entity.Categoria;
 import com.goodbrowsergames.backend.entity.Jogo;
+import com.goodbrowsergames.backend.model.AvaliacaoJogoComentario;
 import com.goodbrowsergames.backend.repository.AvaliacaoRepository;
 import com.goodbrowsergames.backend.repository.CategoriaRepository;
 import com.goodbrowsergames.backend.repository.JogoRepository;
@@ -26,8 +27,9 @@ public class AvaliacaoService {
         return avaliacaoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
-    public Jogo qtdDeAvaliacao(Jogo jogo, Integer idUsuario, Integer nota) {
+    public Jogo qtdDeAvaliacao(AvaliacaoJogoComentario avaliacaoJogoComentario, Integer idUsuario, Integer nota) {
         List<Avaliacao> lista = avaliacaoRepository.findAll();
+        Jogo jogo = avaliacaoJogoComentario.getJogo();
         Avaliacao avaliacao = contemAvaliacao(lista, jogo.getId(), idUsuario);
         Categoria categoria = categoriaRepository.findById(Integer.parseInt(jogo.getCategoriaCodigo())).get();
         if (avaliacao != null){
@@ -36,6 +38,7 @@ public class AvaliacaoService {
             categoriaRepository.save(categoria);
 
             avaliacao.setNota(nota);
+            avaliacao.setComentario(avaliacaoJogoComentario.getComentario());
             avaliacaoRepository.save(avaliacao);
 
             jogo.setNota(notaNova(jogo.getId()));
@@ -50,6 +53,7 @@ public class AvaliacaoService {
             _avaliacao.setJogoCodigo(jogo.getId());
             _avaliacao.setUsuarioCodigo(idUsuario);
             _avaliacao.setNota(nota);
+            _avaliacao.setComentario(avaliacaoJogoComentario.getComentario());
             avaliacaoRepository.save(_avaliacao);
 
             jogo.setQtdDeAvaliacao(jogo.getQtdDeAvaliacao()+1);

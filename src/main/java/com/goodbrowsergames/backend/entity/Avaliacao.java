@@ -22,4 +22,5 @@ public class Avaliacao {
     private Integer nota;
     private Integer jogoCodigo;
     private Integer usuarioCodigo;
+    private String comentario;
 }
