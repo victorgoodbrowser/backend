@@ -29,7 +29,7 @@ public class AvaliacaoService {
 
     public Jogo qtdDeAvaliacao(AvaliacaoJogoComentario avaliacaoJogoComentario, Integer idUsuario, Integer nota) {
         List<Avaliacao> lista = avaliacaoRepository.findAll();
-        Jogo jogo = avaliacaoJogoComentario.getJogo();
+        Jogo jogo = jogoRepository.findById(avaliacaoJogoComentario.getJogoId()).get();
         Avaliacao avaliacao = contemAvaliacao(lista, jogo.getId(), idUsuario);
         Categoria categoria = categoriaRepository.findById(Integer.parseInt(jogo.getCategoriaCodigo())).get();
         if (avaliacao != null){
