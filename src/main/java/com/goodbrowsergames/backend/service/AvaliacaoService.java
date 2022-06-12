@@ -50,6 +50,7 @@ public class AvaliacaoService {
             Avaliacao _avaliacao = new Avaliacao();
             _avaliacao.setJogoCodigo(jogo.getId());
             _avaliacao.setUsuarioCodigo(idUsuario);
+            _avaliacao.setComentario(jogo.getComentario());
             _avaliacao.setNota(nota);
             avaliacaoRepository.save(_avaliacao);
 
