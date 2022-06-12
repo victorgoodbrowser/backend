@@ -20,10 +20,9 @@ public class AvaliacaoController {
 
     @PostMapping("/qtdDeAvaliacao/{idUsuario}/{nota}")
     public Jogo jogo(@RequestBody Jogo jogo,
-                     @RequestBody Avaliacao avaliacao,
                      @PathVariable Integer idUsuario,
                      @PathVariable Integer nota) {
-        return avaliacaoService.qtdDeAvaliacao(jogo, idUsuario, nota, avaliacao);
+        return avaliacaoService.qtdDeAvaliacao(jogo, idUsuario, nota);
     }
 
     @GetMapping("/listarPorIdJogo/{idJogo}")

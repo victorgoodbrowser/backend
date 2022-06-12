@@ -26,7 +26,7 @@ public class AvaliacaoService {
         return avaliacaoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
-    public Jogo qtdDeAvaliacao(Jogo jogo, Integer idUsuario, Integer nota, Avaliacao comentarioAvaliacao) {
+    public Jogo qtdDeAvaliacao(Jogo jogo, Integer idUsuario, Integer nota) {
         List<Avaliacao> lista = avaliacaoRepository.findAll();
         Avaliacao avaliacao = contemAvaliacao(lista, jogo.getId(), idUsuario);
         Categoria categoria = categoriaRepository.findById(Integer.parseInt(jogo.getCategoriaCodigo())).get();
@@ -36,7 +36,7 @@ public class AvaliacaoService {
             categoriaRepository.save(categoria);
 
             avaliacao.setNota(nota);
-            avaliacao.setComentario(comentarioAvaliacao.getComentario());
+            avaliacao.setComentario(jogo.getComentario());
             avaliacaoRepository.save(avaliacao);
 
             jogo.setNota(notaNova(jogo.getId()));
