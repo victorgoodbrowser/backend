@@ -17,9 +17,8 @@ import javax.persistence.Id;
 @Data
 public class AvaliacaoJogoComentario {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "uuid", unique = true)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private Integer id;
 
     private Integer jogoId;
