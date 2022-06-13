@@ -95,4 +95,15 @@ public class AvaliacaoService {
         }
         return lista;
     }
+
+    public Integer buscarNotaPorJogo(Integer idUsuario, Integer idJogo) {
+        List<Avaliacao> listaAvaliacao = avaliacaoRepository.findAll();
+        Integer nota = listaAvaliacao
+                .stream()
+                .filter(avaliacao ->  idJogo.toString().equals(avaliacao.getJogoCodigo()) &&
+                        idUsuario.toString().equals(avaliacao.getUsuarioCodigo()))
+                .findAny()
+                .orElse(null).getNota();
+        return nota;
+    }
 }

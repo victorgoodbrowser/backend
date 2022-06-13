@@ -30,4 +30,9 @@ public class AvaliacaoController {
     public List<Avaliacao> lsitarAvaliacaoPorIdJogo(@PathVariable Integer idJogo) {
         return avaliacaoService.visualizarOutrasAvaliacoes(idJogo);
     }
+
+    @GetMapping("/buscarNotaPorJogo/{idUsuario}/{idJogo}")
+    public Integer buscarNotaPorJogo(@PathVariable Integer idUsuario, @PathVariable Integer idJogo) {
+        return avaliacaoService.buscarNotaPorJogo(idUsuario, idJogo);
+    }
 }
