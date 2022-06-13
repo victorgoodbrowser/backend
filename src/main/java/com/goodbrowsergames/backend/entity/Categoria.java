@@ -13,8 +13,9 @@ import javax.persistence.*;
 @Data
 public class Categoria {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "uuid", unique = true)
     private Integer id;
 
     private String nome;
