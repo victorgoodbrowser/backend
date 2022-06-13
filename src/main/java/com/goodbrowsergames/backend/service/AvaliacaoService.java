@@ -96,14 +96,14 @@ public class AvaliacaoService {
         return lista;
     }
 
-    public Integer buscarNotaPorJogo(Integer idUsuario, Integer idJogo) {
+    public Avaliacao buscarNotaPorJogo(Integer idUsuario, Integer idJogo) {
         List<Avaliacao> listaAvaliacao = avaliacaoRepository.findAll();
-        Integer nota = listaAvaliacao
+        Avaliacao avaliacao = listaAvaliacao
                 .stream()
-                .filter(avaliacao ->  idJogo.toString().equals(avaliacao.getJogoCodigo().toString()) &&
-                        idUsuario.toString().equals(avaliacao.getUsuarioCodigo().toString()))
+                .filter(element ->  idJogo.toString().equals(element.getJogoCodigo().toString()) &&
+                        idUsuario.toString().equals(element.getUsuarioCodigo().toString()))
                 .findAny()
-                .orElse(null).getNota();
-        return nota;
+                .orElse(null);
+        return avaliacao;
     }
 }

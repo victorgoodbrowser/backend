@@ -31,8 +31,8 @@ public class AvaliacaoController {
         return avaliacaoService.visualizarOutrasAvaliacoes(idJogo);
     }
 
-    @GetMapping("/buscarNotaPorJogo/{idUsuario}/{idJogo}")
-    public Integer buscarNotaPorJogo(@PathVariable Integer idUsuario, @PathVariable Integer idJogo) {
+    @GetMapping("/buscarAvaliacaoPorJogo/{idUsuario}/{idJogo}")
+    public Avaliacao buscarNotaPorJogo(@PathVariable Integer idUsuario, @PathVariable Integer idJogo) {
         return avaliacaoService.buscarNotaPorJogo(idUsuario, idJogo);
     }
 }
